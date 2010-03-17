@@ -8,3 +8,15 @@ src 'node' do
   build { shell "make" }
   install { shell 'make install', :sudo => true }
 end
+
+src 'coffee' do
+  requires 'node'
+  source 'git://github.com/jashkenas/coffee-script.git'
+  configure { true }
+  build { true }
+  install { shell 'bin/cake install', :sudo => true }
+end
+
+tmbundle 'CoffeeScript.tmbundle' do
+  source 'git://github.com/jashkenas/coffee-script-tmbundle.git'
+end
